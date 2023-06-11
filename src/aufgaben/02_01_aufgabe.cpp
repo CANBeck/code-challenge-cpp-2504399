@@ -1,10 +1,22 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 int berechneVolumen(std::vector<int> eingabe)
 {
     // todo berechne Volumen
-    return 0;
+    int length = eingabe.size();
+    int max_vol = 0;
+
+    for (int i = 0; i < length; i++)
+    {
+        for (int j = i + 1; j < length; j++)
+        {
+            int current_vol = std::min(eingabe[i], eingabe[j]) * (j - i);
+            max_vol = std::max(max_vol, current_vol);
+        }
+    }
+    return max_vol;
 }
 
 int main()
